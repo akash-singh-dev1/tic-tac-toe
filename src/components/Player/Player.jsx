@@ -1,46 +1,54 @@
 import { useState } from "react";
 import "./Player.css";
 
-const Player = ({ initialName, symbol }) => {
-  const [isEditing, setIsEditing] = useState(false); //state for edit/save button.
-  const [playerName, setPlayerName] = useState(initialName); //state for name of player.
+const Player = ({ initialName, symbol, isActive }) => {
+  // Controls whether we are currently editing the player's name
+  const [isEditing, setIsEditing] = useState(false);
+  // Stores the current name of the player
+  const [playerName, setPlayerName] = useState(initialName);
 
-  //function for onClick event on button.
+  // Runs when the "Edit" or "Save" button is clicked
   const handleEditClick = () => {
+    // Toggle between editing mode and display mode
     setIsEditing((prev) => !prev);
+
+    // Just for debugging to see which button was clicked
     if (!isEditing) {
-      console.log(`edit button is clicked you can now edit player name `);
-    } else console.log(`save button is clicked player name is saved`);
+      console.log("Edit mode enabled. You can now change the player name.");
+    } else {
+      console.log("Edit mode disabled. Player name saved.");
+    }
   };
 
-  //function for onChange event on input.
+  // Runs whenever the input value changes (only in editing mode)
   const handleChange = (event) => {
-    console.log("onChange event is fired");
+    console.log("Input changed.");
+    // Update the player's name in state
     setPlayerName(event.target.value);
-    console.log(`player name is set to :${event.target.value}`);
   };
 
   return (
-    <>
-      <li>
-        <span className="player">
-          {!isEditing ? (
-            <span className="player-name">{playerName}</span>
-          ) : (
-            <input
-              id=""
-              type="text"
-              value={playerName}
-              onChange={handleChange}
-            ></input>
-          )}
-          <span className="player-symbol">{symbol}</span>
-          <button type="button" onClick={handleEditClick}>
-            {!isEditing ? "Edit" : "Save"}
-          </button>
-        </span>
-      </li>
-    </>
+    // Add CSS class "active" only when this player is the current turn
+    <li className={isActive ? "active" : undefined}>
+      <span className="player">
+        {/* If NOT editing → show plain text name
+            If editing → show an input field */}
+        {!isEditing ? (
+          <span className="player-name">{playerName}</span>
+        ) : (
+          <input type="text" value={playerName} onChange={handleChange} />
+        )}
+
+        {/* Show X or O beside the player's name */}
+        <span className="player-symbol">{symbol}</span>
+
+        {/* Button changes label depending on state */}
+        <button type="button" onClick={handleEditClick}>
+          {!isEditing ? "Edit" : "Save"}
+        </button>
+      </span>
+    </li>
   );
 };
+
 export default Player;
