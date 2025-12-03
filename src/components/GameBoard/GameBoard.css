@@ -28,3 +28,7 @@
   font-family: "Caprasimo", cursive;
   padding: 1rem;
 }
+
+#game-board button:disabled {
+  background-color: #e5d35c;
+}
