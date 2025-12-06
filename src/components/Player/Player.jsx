@@ -1,17 +1,22 @@
 import { useState } from "react";
 import "./Player.css";
 
-const Player = ({ initialName, symbol, isActive }) => {
-  // Controls whether we are currently editing the player's name
+const Player = ({ initialName, symbol, isActive, onChangeName }) => {
+  // Controls whether we are currently editing the player's name.
   const [isEditing, setIsEditing] = useState(false);
   // Stores the current name of the player
   const [playerName, setPlayerName] = useState(initialName);
 
-  // Runs when the "Edit" or "Save" button is clicked
+  // Runs when the "Edit" or "Save" button is clicked.
   const handleEditClick = () => {
-    // Toggle between editing mode and display mode
+    // Toggle between editing mode and display (save) mode
     setIsEditing((prev) => !prev);
 
+    /* this will run when we click save button this send the symbol and playeName to
+     App component using callBack function received using prop onChangeName. */
+    if (isEditing) {
+      onChangeName(symbol, playerName);
+    }
     // Just for debugging to see which button was clicked
     if (!isEditing) {
       console.log("Edit mode enabled. You can now change the player name.");
