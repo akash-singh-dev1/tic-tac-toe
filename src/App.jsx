@@ -143,8 +143,8 @@ function App() {
           <GameOver winner={winner} rematch={handleRematch} />
         )}
         <GameBoard onSelectSquare={handleSelectSquare} board={gameBoard} />
-        <Log clickInfo={gameTurns} />
       </div>
+      <Log clickInfo={gameTurns} />
     </main>
   );
 }

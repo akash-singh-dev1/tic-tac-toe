@@ -6,6 +6,7 @@
   margin: 3rem 0;
   padding: 0;
   flex-direction: column;
+  min-width: fit-content;
 }
 
 #game-board ol {
