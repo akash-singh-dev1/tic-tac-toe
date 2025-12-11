@@ -9,14 +9,23 @@ const Player = ({ initialName, symbol, isActive, onChangeName }) => {
 
   // Runs when the "Edit" or "Save" button is clicked.
   const handleEditClick = () => {
-    // Toggle between editing mode and display (save) mode
-    setIsEditing((prev) => !prev);
-
-    /* this will run when we click save button this send the symbol and playeName to
-     App component using callBack function received using prop onChangeName. */
+    /* this will run when we click save button */
     if (isEditing) {
-      onChangeName(symbol, playerName);
+      //check for empty string.
+      if (playerName.trim() === "") {
+        // Restore old name instead of saving empty string
+        setPlayerName(initialName);
+        return;
+      }
+      // OPTIMIZATION: Only save if the name actually changed
+      if (playerName !== initialName) {
+        // this send the symbol and playeName to App component using callBack function received using prop onChangeName.
+        onChangeName(symbol, playerName);
+      }
     }
+    //  Toggle Mode (Runs only if we didn't return early)
+    setIsEditing((editing) => !editing);
+
     // Just for debugging to see which button was clicked
     if (!isEditing) {
       console.log("Edit mode enabled. You can now change the player name.");
