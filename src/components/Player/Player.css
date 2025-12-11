@@ -41,8 +41,14 @@
   }
 }
 
-.player-symbol {
+.player-symbol[data-symbol="X"] {
   margin-left: 1rem;
   font-size: 1rem;
-  color: #e1dec7;
+  color: var(--player-X-color);
+}
+
+.player-symbol[data-symbol="O"] {
+  margin-left: 1rem;
+  font-size: 1rem;
+  color: var(--player-O-color);
 }

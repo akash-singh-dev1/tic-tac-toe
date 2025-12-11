@@ -30,6 +30,14 @@
   padding: 1rem;
 }
 
-#game-board button:disabled {
+/* #game-board button:disabled {
   background-color: #e5d35c;
+} */
+
+#game-board button:disabled[data-symbol="X"] {
+  background-color: var(--player-X-color);
+}
+
+#game-board button:disabled[data-symbol="O"] {
+  background-color: var(--player-O-color);
 }

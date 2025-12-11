@@ -14,6 +14,7 @@ const GameBoard = ({ onSelectSquare, board }) => {
                 <button
                   disabled={board[rowIndex][colIndex] !== null}
                   onClick={() => onSelectSquare(rowIndex, colIndex)}
+                  data-symbol={playerSymbol}
                 >
                   {/* Display X, O, or nothing depending on the state */}
                   {playerSymbol}

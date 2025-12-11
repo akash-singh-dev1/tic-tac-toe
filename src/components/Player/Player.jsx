@@ -34,18 +34,25 @@ const Player = ({ initialName, symbol, isActive, onChangeName }) => {
 
   return (
     // Add CSS class "active" only when this player is the current turn
-    <li className={isActive ? "active" : undefined}>
+    <li data-symbol={symbol} className={isActive ? "active" : undefined}>
       <span className="player">
         {/* If NOT editing → show plain text name
             If editing → show an input field */}
         {!isEditing ? (
           <span className="player-name">{playerName}</span>
         ) : (
-          <input type="text" value={playerName} onChange={handleChange} />
+          <input
+            type="text"
+            value={playerName}
+            onChange={handleChange}
+            autoFocus
+          />
         )}
 
         {/* Show X or O beside the player's name */}
-        <span className="player-symbol">{symbol}</span>
+        <span data-symbol={symbol} className="player-symbol">
+          {symbol}
+        </span>
 
         {/* Button changes label depending on state */}
         <button type="button" onClick={handleEditClick}>
