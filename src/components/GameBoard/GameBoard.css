@@ -41,3 +41,18 @@
 #game-board button:disabled[data-symbol="O"] {
   background-color: var(--player-O-color);
 }
+
+/* if the screen size is too small the button and font size will be also small*/
+@media screen and (max-width: 375px) {
+  #game-board button {
+    width: 4rem;
+    height: 4rem;
+    border: none;
+    background: #aca788;
+    color: #3f3b00;
+    font-size: 2.2rem;
+    cursor: pointer;
+    font-family: "Caprasimo", cursive;
+    padding: 1rem;
+  }
+}

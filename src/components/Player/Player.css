@@ -3,11 +3,12 @@
   padding: 0.5rem;
   border-radius: 4px;
   font-weight: bold;
+  max-width: 100%;
 }
 
 .player-name {
   display: inline-block;
-  width: 10rem;
+  max-width: 100%;
   font-size: 1rem;
   color: #e1dec7;
   text-transform: uppercase;
@@ -20,7 +21,7 @@
 
 .player input {
   font-size: 1rem;
-  width: 10rem;
+  max-width: 100%;
   border: none;
   padding: 0.5rem;
   animation: pulse-text 2s infinite;
@@ -42,13 +43,13 @@
 }
 
 .player-symbol[data-symbol="X"] {
-  margin-left: 1rem;
+  margin-left: 0.5rem;
   font-size: 1rem;
   color: var(--player-X-color);
 }
 
 .player-symbol[data-symbol="O"] {
-  margin-left: 1rem;
+  margin-left: 0.5rem;
   font-size: 1rem;
   color: var(--player-O-color);
 }
